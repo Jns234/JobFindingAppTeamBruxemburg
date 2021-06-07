@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace JobFindingAppTeamBruxemburg.Repositories
 {
-    public class EmployeeRepository : BaseRepository<Employee>
+    public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
         public EmployeeRepository(ApplicationDbContext context) : base(context)
         {
-
         }
-
         public Task<IList<Employee>> List()
         {
             return null;
