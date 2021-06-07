@@ -14,6 +14,9 @@ namespace JobFindingAppTeamBruxemburg.MappingProfile
         {
             CreateMap<Tag, TagModel>();
             CreateMap<TagModel, Tag>();
+
+            CreateMap<Employee, EmployeeModel>();
+            CreateMap<EmployeeModel, Employee>();
         }
     }
 }
