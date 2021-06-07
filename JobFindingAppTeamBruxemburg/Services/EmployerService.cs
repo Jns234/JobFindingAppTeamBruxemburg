@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AutoMapper;
+using JobFindingAppTeamBruxemburg.Data;
+using JobFindingAppTeamBruxemburg.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
