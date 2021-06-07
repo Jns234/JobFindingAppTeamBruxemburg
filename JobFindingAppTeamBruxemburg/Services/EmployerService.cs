@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace JobFindingAppTeamBruxemburg.Services
 {
-    public class EmployerModelService
+    public class EmployerService
     {
     }
 }
