@@ -5,7 +5,11 @@ using System.Threading.Tasks;
 
 namespace JobFindingAppTeamBruxemburg.Repositories
 {
-    public class TagsRepository
+    public interface IRepository<T>
     {
+        Task<T> Get(int id);
+        Task Insert(T entity);
+        void Update(T entity);
+        void Delete(T entity);
     }
 }

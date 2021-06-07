@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
-namespace KooliProjekt.Data
+namespace JobFindingAppTeamBruxemburg.Data
 {
     public class ApplicationDbContext : DbContext
     {
@@ -11,8 +11,8 @@ namespace KooliProjekt.Data
         }
 
         public DbSet<Tag> Tags { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Employer> Employers{ get; set; }
+        //public DbSet<Employee> Employees { get; set; }
+        //public DbSet<Employer> Employers{ get; set; }
    
         public async Task BeginTransaction()
         {

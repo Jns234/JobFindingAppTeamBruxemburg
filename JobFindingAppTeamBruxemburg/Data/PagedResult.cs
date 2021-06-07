@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KooliProjekt.Data
+namespace JobFindingAppTeamBruxemburg.Data
 {
     public class PagedResult<T> : PagedResultBase
     {

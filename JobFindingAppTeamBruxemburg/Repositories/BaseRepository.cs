@@ -1,9 +1,10 @@
-﻿using System;
+﻿using JobFindingAppTeamBruxemburg.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KooliProjekt.Repositories
+namespace JobFindingAppTeamBruxemburg.Repositories
 {
     public abstract class BaseRepository<T> : IRepository<T> where T : class
     {

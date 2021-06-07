@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace KooliProjekt.Data
+namespace JobFindingAppTeamBruxemburg.Data
 {
     public abstract class Entity
     {
