@@ -10,20 +10,19 @@ using System.Threading.Tasks;
 
 namespace JobFindingAppTeamBruxemburg.Controllers
 {
-    public class EmployersController : Controller
+    public class EmployeesController : Controller
     {
-        private readonly IEmployerService _employerService;
-        //private readonly IEmployerService _employerService;
+        private readonly IEmployeeService _employeeService;
 
-        public EmployersController(IEmployerService employerService)
+        public EmployeesController(IEmployeeService employeeService)
         {
 
-            _employerService = employerService;
+            _employeeService = employeeService;
         }
 
         public async Task<IActionResult> Index(int page = 1)
         {
-            return View(await _employerService.List(page, 10));
+            return View(await _employeeService.List(page, 10));
 
         }
 
@@ -34,13 +33,13 @@ namespace JobFindingAppTeamBruxemburg.Controllers
                 return NotFound();
             }
 
-            var employer = await _employerService.GetEmployerDetails(id);
-            if (employer == null)
+            var employee = await _employeeService.GetEmployeeDetails(id);
+            if (employee == null)
             {
                 return NotFound();
             }
 
-            return View(employer);
+            return View(employee);
         }
 
         public IActionResult Create()
@@ -50,14 +49,14 @@ namespace JobFindingAppTeamBruxemburg.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(EmployerModel employer)
+        public async Task<IActionResult> Create(EmployeeModel employee)
         {
             if (!ModelState.IsValid)
             {
-                return View(employer);
+                return View(employee);
             }
 
-            await _employerService.SaveEmployer(employer);
+            await _employeeService.SaveEmployee(employee);
             return RedirectToAction(nameof(Index));
 
         }
@@ -70,21 +69,21 @@ namespace JobFindingAppTeamBruxemburg.Controllers
                 return NotFound();
             }
 
-            var employer = await _employerService.GetEmployerForEdit(id.Value);
-            if (employer == null)
+            var employee = await _employeeService.GetEmployeeForEdit(id.Value);
+            if (employee == null)
             {
                 return NotFound();
             }
 
-            return View(employer);
+            return View(employee);
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Employer employer)
+        public async Task<IActionResult> Edit(int id, Employee employee)
         {
-            if (id != employer.Id)
+            if (id != employee.Id)
             {
                 return NotFound();
             }
@@ -93,7 +92,7 @@ namespace JobFindingAppTeamBruxemburg.Controllers
             {
                 try
                 {
-                    await _employerService.UpdateAndSave(employer);
+                    await _employeeService.UpdateAndSave(employee);
 
                 }
                 catch (DbUpdateConcurrencyException)
@@ -103,7 +102,7 @@ namespace JobFindingAppTeamBruxemburg.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(employer);
+            return View(employee);
         }
 
         // GET: Projekts/Delete/5
@@ -114,13 +113,13 @@ namespace JobFindingAppTeamBruxemburg.Controllers
                 return NotFound();
             }
 
-            var employer = await _employerService.GetEmployerDetails(id.Value);
-            if (employer == null)
+            var employee = await _employeeService.GetEmployeeDetails(id.Value);
+            if (employee == null)
             {
                 return NotFound();
             }
 
-            return View(employer);
+            return View(employee);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -131,7 +130,7 @@ namespace JobFindingAppTeamBruxemburg.Controllers
             //_context.Projects.Remove(project);
             //await _context.SaveChangesAsync();
             //await _projectService.RemoveAndSave(id);
-            await _employerService.DeleteEmployer(id);
+            await _employeeService.DeleteEmployee(id);
             return RedirectToAction(nameof(Index));
         }
     }
