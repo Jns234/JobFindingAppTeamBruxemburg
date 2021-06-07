@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace JobFindingAppTeamBruxemburg
 {
@@ -26,15 +27,31 @@ namespace JobFindingAppTeamBruxemburg
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            //services.AddAutoMapper(typeof(Program).Assembly);
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+            });
+            services.AddMvc();
+            services.AddAutoMapper(typeof(Program).Assembly);
             services.AddControllersWithViews();
 
-            services.AddScoped<ITagService, TagService>();
+            services.AddTransient<ITagService, TagService>();
             services.AddScoped<ITagRepository, TagRepository>();
+
+<<<<<<< HEAD
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+=======
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+
+
+
+            services.AddSingleton<IConfiguration>(Configuration);
+>>>>>>> ac0f3cd68c1c1658cc482445eb9191fee5c0c129
         }
 
-        
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -62,6 +79,32 @@ namespace JobFindingAppTeamBruxemburg
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+        private void EnsureDatabase(IApplicationBuilder app)
+        {
+            var serviceScopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+            using (var serviceScope = serviceScopeFactory.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+                dbContext.Database.EnsureCreated();
+
+                var uow = serviceScope.ServiceProvider.GetService<IUnitOfWork>();
+
+                if (dbContext.Tags.Count() == 0)
+                {
+
+                    var tag = new Tag
+                    {
+                        Title = "This is a tag"
+                    };
+
+                    dbContext.Tags.Add(tag);
+
+
+                    dbContext.SaveChanges();
+
+                }
+            }
         }
     }
 }
