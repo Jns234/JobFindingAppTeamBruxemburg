@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JobFindingAppTeamBruxemburg.Data
 {
-    public class Tags
+    public class Tag
     {
         [Key]
         public int Id { get; set; }

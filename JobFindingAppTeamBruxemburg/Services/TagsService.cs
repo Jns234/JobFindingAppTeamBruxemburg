@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JobFindingAppTeamBruxemburg.Controllers
+namespace JobFindingAppTeamBruxemburg.Services
 {
-    public class TagsController : Controller
+    public class TagsService
     {
-        public TagsController()
+        public IActionResult Index()
         {
-            
+           
         }
     }
 }
