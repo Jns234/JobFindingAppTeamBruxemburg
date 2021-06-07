@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace JobFindingAppTeamBruxemburg.Controllers
 {
-    public class TagsController : Controller
+    public class TagController : Controller
     {
         private readonly ITagService _tagService;
 
-        public TagsController(ITagService tagService)
+        public TagController(ITagService tagService)
         {
 
             _tagService = tagService;
@@ -126,10 +126,7 @@ namespace JobFindingAppTeamBruxemburg.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            //var project = await _context.Projects.FindAsync(id);
-            //_context.Projects.Remove(project);
-            //await _context.SaveChangesAsync();
-            //await _projectService.RemoveAndSave(id);
+            
             await _tagService.DeleteTag(id);
             return RedirectToAction(nameof(Index));
         }

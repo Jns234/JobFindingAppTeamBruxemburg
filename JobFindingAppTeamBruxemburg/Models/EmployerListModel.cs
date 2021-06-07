@@ -9,7 +9,7 @@ namespace JobFindingAppTeamBruxemburg.Models
     public class EmployerListModel
     {
         [Display(Name = "Name")]
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         [Display(Name = "Tags")]
         public string Tags { get; set; }

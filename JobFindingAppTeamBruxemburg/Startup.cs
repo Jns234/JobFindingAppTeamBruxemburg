@@ -37,6 +37,8 @@ namespace JobFindingAppTeamBruxemburg
 
             services.AddTransient<ITagService, TagService>();
             services.AddScoped<ITagRepository, TagRepository>();
+            services.AddScoped<IEmployerService, EmployerService>();
+            services.AddScoped<IEmployerRepository, EmployerRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -92,6 +94,11 @@ namespace JobFindingAppTeamBruxemburg
                     {
                         Title = "This is a tag"
                     };
+                    new Tag
+                    {
+                        Title = "Another Tag"
+                    };
+                    
 
                     dbContext.Tags.Add(tag);
 

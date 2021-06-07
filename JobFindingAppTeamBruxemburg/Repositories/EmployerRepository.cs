@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JobFindingAppTeamBruxemburg.Repositories
 {
-    public class EmployerRepository : BaseRepository<Employer>
+    public class EmployerRepository : BaseRepository<Employer>, IEmployerRepository
     {
         public EmployerRepository(ApplicationDbContext context) : base(context)
         {

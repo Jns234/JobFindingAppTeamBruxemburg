@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using JobFindingAppTeamBruxemburg.Repositories;
+using System.Threading.Tasks;
 
 namespace JobFindingAppTeamBruxemburg.Data
 {
@@ -9,14 +10,17 @@ namespace JobFindingAppTeamBruxemburg.Data
         private readonly ApplicationDbContext _context;
 
         public ITagRepository TagRepository { get; private set; }
+        public IEmployerRepository EmployerRepository { get; private set; }
 
 
         public UnitOfWork(ApplicationDbContext context,
-                ITagRepository tagRepository)
+                ITagRepository tagRepository,
+                IEmployerRepository employerRepository)
         {
             _context = context;
 
             TagRepository = tagRepository;
+            EmployerRepository = employerRepository;
         }
 
         public async Task BeginTransaction()

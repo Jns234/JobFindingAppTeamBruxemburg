@@ -14,5 +14,6 @@ namespace JobFindingAppTeamBruxemburg.Data
         void Rollback();
 
         ITagRepository TagRepository { get; }
+        IEmployerRepository EmployerRepository { get; }
     }
 }
