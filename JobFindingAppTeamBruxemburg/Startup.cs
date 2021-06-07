@@ -1,3 +1,5 @@
+using JobFindingAppTeamBruxemburg.Data;
+using JobFindingAppTeamBruxemburg.Repositories;
 using JobFindingAppTeamBruxemburg.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,7 +30,8 @@ namespace JobFindingAppTeamBruxemburg
             //services.AddAutoMapper(typeof(Program).Assembly);
             services.AddControllersWithViews();
 
-            //services.AddScoped<ITagService, TagService() >;
+            services.AddScoped<ITagService, TagService>();
+            services.AddScoped<ITagRepository, TagRepository>();
         }
 
         
