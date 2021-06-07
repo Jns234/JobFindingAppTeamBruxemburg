@@ -28,7 +28,7 @@ namespace JobFindingAppTeamBruxemburg.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return NotFound();
             }
