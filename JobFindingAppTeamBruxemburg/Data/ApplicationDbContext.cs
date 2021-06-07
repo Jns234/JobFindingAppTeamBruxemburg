@@ -12,8 +12,8 @@ namespace JobFindingAppTeamBruxemburg.Data
 
         public DbSet<Tag> Tags { get; set; }
         //public DbSet<Employee> Employees { get; set; }
-        //public DbSet<Employer> Employers{ get; set; }
-   
+        public DbSet<Employer> Employers { get; set; }
+
         public async Task BeginTransaction()
         {
             await Database.BeginTransactionAsync();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JobFindingAppTeamBruxemburg.Data
 {
-    public class EmployerModel
+    public class Employer
     {
         [Key]
         public int Id { get; set; }
@@ -15,11 +15,12 @@ namespace JobFindingAppTeamBruxemburg.Data
         public object Tags { get; set; }
         public string Location { get; set; }
 
-        public IList<EmployerModel> EmployerModels { get; set; }
+        public IList<Employer> EmployerModels { get; set; }
 
-        public EmployerModel()
-        {
-            EmployerModels = new List<EmployerModel>();
-        }
+        //    public Employer()
+        //    {
+        //        EmployerModels = new List<Employer>();
+        //    }
+        //}
     }
 }

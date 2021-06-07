@@ -103,7 +103,7 @@ namespace JobFindingAppTeamBruxemburg.Services
                 {
                     _unitOfWork.TagRepository.Update(tag);
                 }
-                _unitOfWork.Save();
+                await _unitOfWork.Save();
                 _unitOfWork.Commit();
             }
             catch

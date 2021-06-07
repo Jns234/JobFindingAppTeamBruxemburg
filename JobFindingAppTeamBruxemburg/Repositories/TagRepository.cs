@@ -21,7 +21,6 @@ namespace JobFindingAppTeamBruxemburg.Repositories
             var query = DataContext.Tags.AsQueryable();
 
             var result = await query.OrderBy(tag => tag.Title)
-                                    .ThenByDescending(tag => tag.Title)
                                     .GetPagedAsync(page, pageSize);
 
             return result;
