@@ -10,6 +10,8 @@ namespace JobFindingAppTeamBruxemburg.Data
 
         public ITagRepository TagRepository { get; private set; }
 
+        public IEmployeeRepository EmployeeRepository { get; private set; }
+
 
         public UnitOfWork(ApplicationDbContext context,
                 ITagRepository tagRepository)
