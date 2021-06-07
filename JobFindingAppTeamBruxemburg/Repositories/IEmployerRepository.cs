@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace JobFindingAppTeamBruxemburg.Repositories
 {
-    public interface IEmployerRepository : IRepository<Employer>
+
+        public interface IEmployerRepository : IRepository<Employer>
     {
         Task<PagedResult<Employer>> List(int page, int pageSize);
     }

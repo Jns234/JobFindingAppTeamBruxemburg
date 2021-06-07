@@ -40,12 +40,17 @@ namespace JobFindingAppTeamBruxemburg
             services.AddScoped<IEmployerService, EmployerService>();
             services.AddScoped<IEmployerRepository, EmployerRepository>();
 
+<<<<<<< HEAD
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+=======
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 
 
             services.AddSingleton<IConfiguration>(Configuration);
+>>>>>>> ac0f3cd68c1c1658cc482445eb9191fee5c0c129
         }
 
 
