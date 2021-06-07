@@ -10,19 +10,20 @@ using System.Threading.Tasks;
 
 namespace JobFindingAppTeamBruxemburg.Controllers
 {
-    public class TagsController : Controller
+    public class EmployersController : Controller
     {
-        private readonly ITagService _tagService;
+        private readonly IEmployerService _employerService;
+        //private readonly IEmployerService _employerService;
 
-        public TagsController(ITagService tagService)
+        public EmployersController(IEmployerService employerService)
         {
 
-            _tagService = tagService;
+            _employerService = employerService;
         }
 
         public async Task<IActionResult> Index(int page = 1)
         {
-            return View(await _tagService.List(page, 10));
+            return View(await _employerService.List(page, 10));
 
         }
 
@@ -33,13 +34,13 @@ namespace JobFindingAppTeamBruxemburg.Controllers
                 return NotFound();
             }
 
-            var tag = await _tagService.GetTagDetails(id);
-            if (tag == null)
+            var employer = await _employerService.GetEmployerDetails(id);
+            if (employer == null)
             {
                 return NotFound();
             }
 
-            return View(tag);
+            return View(employer);
         }
 
         public IActionResult Create()
@@ -49,14 +50,14 @@ namespace JobFindingAppTeamBruxemburg.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(TagModel tag)
+        public async Task<IActionResult> Create(EmployerModel employer)
         {
             if (!ModelState.IsValid)
             {
-                return View(tag);
+                return View(employer);
             }
 
-            await _tagService.SaveTag(tag);
+            await _employerService.SaveEmployer(employer);
             return RedirectToAction(nameof(Index));
 
         }
@@ -69,21 +70,21 @@ namespace JobFindingAppTeamBruxemburg.Controllers
                 return NotFound();
             }
 
-            var tag = await _tagService.GetTagForEdit(id.Value);
-            if (tag == null)
+            var employer = await _employerService.GetEmployerForEdit(id.Value);
+            if (employer == null)
             {
                 return NotFound();
             }
 
-            return View(tag);
+            return View(employer);
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Tag tag)
+        public async Task<IActionResult> Edit(int id, Employer employer)
         {
-            if (id != tag.Id)
+            if (id != employer.Id)
             {
                 return NotFound();
             }
@@ -92,7 +93,7 @@ namespace JobFindingAppTeamBruxemburg.Controllers
             {
                 try
                 {
-                    await _tagService.UpdateAndSave(tag);
+                    await _employerService.UpdateAndSave(employer);
 
                 }
                 catch (DbUpdateConcurrencyException)
@@ -102,7 +103,7 @@ namespace JobFindingAppTeamBruxemburg.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(tag);
+            return View(employer);
         }
 
         // GET: Projekts/Delete/5
@@ -113,13 +114,13 @@ namespace JobFindingAppTeamBruxemburg.Controllers
                 return NotFound();
             }
 
-            var tag = await _tagService.GetTagDetails(id.Value);
-            if (tag == null)
+            var employer = await _employerService.GetEmployerDetails(id.Value);
+            if (employer == null)
             {
                 return NotFound();
             }
 
-            return View(tag);
+            return View(employer);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -130,7 +131,7 @@ namespace JobFindingAppTeamBruxemburg.Controllers
             //_context.Projects.Remove(project);
             //await _context.SaveChangesAsync();
             //await _projectService.RemoveAndSave(id);
-            await _tagService.DeleteTag(id);
+            await _employerService.DeleteEmployer(id);
             return RedirectToAction(nameof(Index));
         }
     }
