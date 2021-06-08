@@ -1,6 +1,7 @@
 ﻿using JobFindingAppTeamBruxemburg.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using JobFindingAppTeamBruxemburg.Models;
 
 namespace JobFindingAppTeamBruxemburg.Data
 {
@@ -44,5 +45,7 @@ namespace JobFindingAppTeamBruxemburg.Data
         {
             await AddAsync(entity);
         }
+
+        public DbSet<JobFindingAppTeamBruxemburg.Models.TagModel> TagModel { get; set; }
     }
 }

@@ -11,8 +11,8 @@ namespace JobFindingAppTeamBruxemburg.Models
         [Display(Name = "Name")]
         public string Name { get; set; }
 
-        [Display(Name = "Tags")]
-        public string Tags { get; set; }
+        //[Display(Name = "Tags")]
+        //public string Tags { get; set; }
 
         [Display(Name = "Location")]
         public string Location { get; set; }

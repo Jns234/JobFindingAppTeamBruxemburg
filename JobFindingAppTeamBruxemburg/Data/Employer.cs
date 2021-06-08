@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobFindingAppTeamBruxemburg.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace JobFindingAppTeamBruxemburg.Data
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public object Tags { get; set; }
+        public List<TagModel> Tag { get; set; }
         public string Location { get; set; }
 
         public IList<Employer> EmployerModels { get; set; }
