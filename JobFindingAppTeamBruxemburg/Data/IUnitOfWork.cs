@@ -1,4 +1,3 @@
-
 ﻿using JobFindingAppTeamBruxemburg.Repositories;
 using System;
 using System.Collections.Generic;
@@ -16,7 +15,5 @@ namespace JobFindingAppTeamBruxemburg.Data
 
         ITagRepository TagRepository { get; }
         IEmployerRepository EmployerRepository { get; }
-        IEmployeeRepository EmployeeRepository { get; }
     }
 }
-
