@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JobFindingAppTeamBruxemburg.Models
 {
-    public class EmployerListModel
+    public class EmployeeListModel
     {
         [Display(Name = "Name")]
         public string Name { get; set; }
@@ -14,11 +14,7 @@ namespace JobFindingAppTeamBruxemburg.Models
         [Display(Name = "Tags")]
         public List<TagModel> Tag { get; set; }
 
-        [Display(Name = "Location")]
-        public string Location { get; set; }
-
         [Display(Name = "Description")]
         public string Description { get; set; }
-
     }
 }
