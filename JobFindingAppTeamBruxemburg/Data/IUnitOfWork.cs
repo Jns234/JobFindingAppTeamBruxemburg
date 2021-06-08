@@ -15,5 +15,6 @@ namespace JobFindingAppTeamBruxemburg.Data
 
         ITagRepository TagRepository { get; }
         IEmployerRepository EmployerRepository { get; }
+        IEmployeeRepository EmployeeRepository { get; }
     }
 }

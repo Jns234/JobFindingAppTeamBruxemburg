@@ -9,6 +9,7 @@ namespace JobFindingAppTeamBruxemburg.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
+            Database.EnsureCreated();
         }
 
         public DbSet<Tag> Tags { get; set; }
